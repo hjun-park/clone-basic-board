@@ -17,14 +17,25 @@ public class BoardDto {
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 
+    // toEntity : dto에서 필요한 부분을 builder 패턴을 이용해 entity로 만든다.
+    // 필요한 엔티티는 이런 식으로 추가하면 된다.
     public BoardEntity toEntity(){
-        BoardEntity boardEntity = BoardEntity.builder()
+        return BoardEntity.builder()
                 .id(id)
                 .writer(writer)
                 .title(title)
                 .content(content)
                 .build();
-        return boardEntity;
+    }
+
+    @Builder
+    public BoardDto(BoardEntity boardEntity) {
+        this.id = boardEntity.getId();
+        this.writer = boardEntity.getWriter();
+        this.title = boardEntity.getTitle();
+        this.content = boardEntity.getContent();
+        this.createdDate = boardEntity.getCreatedDate();
+        this.modifiedDate = boardEntity.getModifiedDate();
     }
 
     @Builder

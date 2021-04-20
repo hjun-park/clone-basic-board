@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+
 <h2 th:text="${boardDto.title}"></h2>
 <p th:inline="text">작성일 : [[${#temporals.format(boardDto.createdDate, 'yyyy-MM-dd HH:mm')}]]</p>
 
@@ -22,11 +23,14 @@
     </form>
 </div>
 
+<!-- 변수 셋팅 -->
 <script th:inline="javascript">
-        /*<![CDATA[*/
-        var boardDto = /*[[${boardDto}]]*/ "";
-        /*]]>*/
-    </script>
+    /*<![CDATA[*/
+    var boardDto = /*[[${boardDto}]]*/ "";
+    /*]]>*/
+</script>
+
+<!-- script -->
 <script th:inline="javascript" th:src="@{/js/board.js}"></script>
 </body>
 </html>
