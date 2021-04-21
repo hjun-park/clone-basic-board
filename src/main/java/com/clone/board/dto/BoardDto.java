@@ -28,7 +28,6 @@ public class BoardDto {
                 .build();
     }
 
-    @Builder
     public BoardDto(BoardEntity boardEntity) {
         this.id = boardEntity.getId();
         this.writer = boardEntity.getWriter();
